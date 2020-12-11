@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TonkaBI Insurance</title>
+
+
+</head>
+<body>
+{% extends "clients/base.html" %}
+
+{% block content %}
+    <table class= "table table-striped table-bordered">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Sum Insured</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for client in summary %}
+
+        <tr>
+            <td>{{client.fullname}}</td>
+            <td>{{client.age}}</td>
+            <td>{{client.sum_insured}}</td>
+            <td>
+                <a href="{% url 'clients_form_edit' client.id %}" class ="btn btn-primary">Edit</a>
+                <a href="{% url 'getpdf' client.id %}" class="btn btn-success glyphicon glyphicon-print">print</a>
+                    <form action="{% url 'clients_form_edit' client.id %}" method="post" class="d-inline"> 
+                    {% csrf_token %}
+
+                        <button type="submit" class="btn">
+                            <i class="fas fa-minus-circle"></i>
+                        </button>
+                </form>
+            </td>  
+        </tr>
+
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock content %}
+</body>

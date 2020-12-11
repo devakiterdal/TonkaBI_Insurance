@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF File</title>
+
+    <style>
+        th,td{
+            padding: 2px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="content">
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Policy Type</th>
+                <th>Sum Insured</th>
+            </tr>
+            {% for c in client %}
+            <tr>
+                <td>{{c.fullname}}</td>
+                <td>{{c.policy_type}}</td>
+                <td>{{c.sum_insured}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "clients/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <a class="pull-right btn-primary" href="clients_summary">Summary page</a>
+</div>
+
+<form method="post" action="" autocomplete="off">
+{% csrf_token %}
+
+    <div class="row">
+        <div class="col-md-8">
+            {{form.fullname|as_crispy_field}}
+        </div>
+
+        <div class="col-md-4">
+            {{form.policy_type|as_crispy_field}}
+        </div>
+    </div>
+
+    {{form.sum_insured|as_crispy_field}}
+    {{form.dob|as_crispy_field}}
+
+    <div class="form-group"> 
+        <button type="reset" class="btn btn-secondary pull-right">Reset</button>
+        <button type="submit" class="btn btn-primary pull-right">Save</button>
+    </div>
+    
+</form>
+
+{% endblock content %}
